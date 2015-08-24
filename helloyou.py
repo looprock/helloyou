@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from bottle import route, run, template, TEMPLATE_PATH, get, post
+from bottle import route, run, template, TEMPLATE_PATH, get, post, request
 import MySQLdb
 
 class dbc(object):
