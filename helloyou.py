@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from bottle import route, run, template
+from bottle import route, run, template, TEMPLATE_PATH, get, post
 import MySQLdb
 
 class dbc(object):
@@ -24,7 +24,7 @@ class dbc(object):
 	def close(self):
 		conn.close()
 
-bottle.TEMPLATE_PATH.insert(0,'/apps/helloyou/templates/')
+TEMPLATE_PATH.insert(0,'/apps/helloyou/templates/')
 
 @get('/')
 def index():
