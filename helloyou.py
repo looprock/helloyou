@@ -34,8 +34,8 @@ def index():
 def hello(name):
 	name = request.forms.get('name')
 	if name:
-    	return template('<b>Hello {{name}}</b>!', name=name)
-    else:
-    	return template('index')
+		return template('<b>Hello {{name}}</b>!', name=name)
+	else:
+		return template('index')
 
 run(host='0.0.0.0', port=8080, debug=True, server='tornado')
