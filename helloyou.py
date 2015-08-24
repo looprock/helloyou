@@ -24,16 +24,18 @@ class dbc(object):
 	def close(self):
 		conn.close()
 
+bottle.TEMPLATE_PATH.insert(0,'/apps/helloyou/templates/')
+
 @get('/')
 def index():
-		return '''<form action="hello" method="post">
-		Hi please enter your name for the guestbook!<p>
-		<input name="name"     type="text" />
-		<INPUT TYPE="submit" value="L">
-		</form>'''
+	return template('index')
 
-@route('/hello/<name>')
+@post('/hello')
+name = request.forms.get('name')
 def hello(name):
-    return template('<b>Hello {{name}}</b>!', name=name)
+	if name:
+    	return template('<b>Hello {{name}}</b>!', name=name)
+    else:
+    	return template('index')
 
 run(host='0.0.0.0', port=8080, debug=True, server='tornado')
