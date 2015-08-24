@@ -35,7 +35,7 @@ def hello():
 	name = request.forms.get('name')
 	if name:
 		db = dbc()
-		db.insert('insert into guests ("name") values ("%s")' % name)
+		db.insert('insert into guests (name) values ("%s")' % name)
 		db.close()
 		return template('<b>Hello {{name}}</b>!<p><a href="/">Back</a>', name=name)
 	else:
