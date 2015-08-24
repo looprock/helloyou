@@ -31,8 +31,8 @@ def index():
 	return template('index')
 
 @post('/hello')
-name = request.forms.get('name')
 def hello(name):
+	name = request.forms.get('name')
 	if name:
     	return template('<b>Hello {{name}}</b>!', name=name)
     else:
