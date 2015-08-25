@@ -35,7 +35,7 @@ def hello():
 	if name:
 		db = dbc()
 		db.insert('insert into guests (name) values ("%s")' % name)
-		return template('<b>Hello {{name}}</b>!<p><a href="/">Back</a><br><a href="/list">List entries</a><p>', name=name)
+		return template('<b>Hello {{name}}</b>!<p><hr><br><a href="/">Back</a><br><a href="/list">List entries</a><p>', name=name)
 	else:
 		return template('index')
 
