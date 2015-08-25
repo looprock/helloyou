@@ -21,7 +21,6 @@ class dbc(object):
 		conn.commit()
 		result = curs.fetchall()
 		return result
-	def close(self):
 		conn.close()
 
 TEMPLATE_PATH.insert(0,'/apps/helloyou/templates/')
@@ -36,9 +35,14 @@ def hello():
 	if name:
 		db = dbc()
 		db.insert('insert into guests (name) values ("%s")' % name)
-		db.close()
 		return template('<b>Hello {{name}}</b>!<p><a href="/">Back</a>', name=name)
 	else:
 		return template('index')
+
+@route('/list')
+def list():
+	db = dbc()
+	result = db.select('select * from guests order by entered')
+	return template('list', result=result)
 
 run(host='0.0.0.0', port=8080, debug=True, server='tornado')
