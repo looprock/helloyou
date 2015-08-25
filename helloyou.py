@@ -1,10 +1,13 @@
 #!/usr/bin/env python
 from bottle import route, run, template, TEMPLATE_PATH, get, post, request
 import MySQLdb
+import os
+
+dbhost = os.environ['dbhost']
 
 class dbc(object):
 	def __init__(self):
-		self.db_host = "10.0.2.15"
+		self.db_host = dbhost
 		self.db_username = "guestbook"
 		self.db_password = "guestbook"
 		self.db_name = "guestbook"
